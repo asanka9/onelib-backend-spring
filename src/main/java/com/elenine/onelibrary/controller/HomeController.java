@@ -46,7 +46,8 @@ public class HomeController {
 	
 	@PostMapping("/externalUserCreate")
 	public User createExternalUser(@RequestBody  User model) {
-		System.out.println("CALLING");
+		System.out.println("External ");
+		model.setId(model.getEmail());
 		return service.createExternalUser(model);
 	}
 }

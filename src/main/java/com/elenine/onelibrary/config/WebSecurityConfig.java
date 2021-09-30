@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
            .antMatchers("/notes").authenticated()
            .anyRequest().permitAll()
            .and()
-           .formLogin().loginPage("/login")
+           .formLogin()
                .usernameParameter("email")
                .permitAll()
            .and()

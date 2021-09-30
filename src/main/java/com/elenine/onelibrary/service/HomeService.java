@@ -1,6 +1,7 @@
 package com.elenine.onelibrary.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.elenine.onelibrary.exception.BadRequestException;
@@ -49,6 +50,8 @@ public class HomeService {
 		if (uModel!=null) {
 			throw new BadRequestException("already have account");
 		}else {
+			// String encodedPassword = passwordEncoder.encode(user.getPassword());
+			model.setPassword((new BCryptPasswordEncoder()).encode(model.getPassword()));
 			model.setName(model.getId());
 			repo.save(model);
 			return model;
